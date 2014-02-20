@@ -1,0 +1,19 @@
+# from https://code.ros.org/svn/wg-ros-pkg/stacks/wg_hardware_test/trunk/qualification/tests/head_test/hysteresis_head_*.launch
+
+head_pan_velocity_controller:
+  type: robot_mechanism_controllers/JointVelocityController
+  joint: head_pan_joint
+  pid: &head_pan_velocity_gains
+    p: 0.5
+    i: 12.0
+    d: 0.0
+    i_clamp: 1.5
+    
+head_tilt_velocity_controller:
+  type: robot_mechanism_controllers/JointVelocityController
+  joint: head_tilt_joint
+  pid: &head_tilt_velocity_gains
+    p: 3.0
+    i: 40.0
+    d: 0.0
+    i_clamp: 8.0

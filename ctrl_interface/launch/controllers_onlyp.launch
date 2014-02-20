@@ -1,0 +1,15 @@
+<launch>
+	<!-- load parameters -->
+	<rosparam file="$(find pr2_sot)/config/p.yaml" command="load" />
+	<rosparam file="$(find pr2_sot)/config/head_pid.yaml" command="load" />
+	
+	<!-- unspawn the default controllers -->
+	<node pkg="pr2_controller_manager" type="unspawner" args="l_arm_controller name r_arm_controller torso_controller head_traj_controller" name ="default_controller_unspawner" />
+	
+	<node pkg="pr2_controller_manager" type="spawner" name="l_controller_spawner" args="l_shoulder_pan_velocity_controller l_shoulder_lift_velocity_controller l_upper_arm_roll_velocity_controller l_elbow_flex_velocity_controller l_forearm_roll_velocity_controller l_wrist_flex_velocity_controller l_wrist_roll_velocity_controller" />
+	<node pkg="pr2_controller_manager" type="spawner" name="r_controller_spawner" args="r_shoulder_pan_velocity_controller r_shoulder_lift_velocity_controller r_upper_arm_roll_velocity_controller r_elbow_flex_velocity_controller r_forearm_roll_velocity_controller r_wrist_flex_velocity_controller r_wrist_roll_velocity_controller" />
+	<node pkg="pr2_controller_manager" type="spawner" name="torso_controller_spawner" args="torso_lift_velocity_controller" />
+	<node pkg="pr2_controller_manager" type="spawner" name="head_controller_spawner" args="head_pan_velocity_controller head_tilt_velocity_controller" />
+	
+	<!-- base controller is already running on default pr2 configuration -->
+</launch>
