@@ -1,7 +1,7 @@
 <launch>
 	<!-- load parameters -->
-	<rosparam file="$(find pr2_sot)/config/p.yaml" command="load" />
-	<rosparam file="$(find pr2_sot)/config/head_pid.yaml" command="load" />
+	<rosparam file="$(find ctrl_interface)/config/p.yaml" command="load" />
+	<rosparam file="$(find ctrl_interface)/config/head_pid.yaml" command="load" />
 	
 	<!-- unspawn the default controllers -->
 	<node pkg="pr2_controller_manager" type="unspawner" args="l_arm_controller name r_arm_controller torso_controller head_traj_controller" name ="default_controller_unspawner" />
