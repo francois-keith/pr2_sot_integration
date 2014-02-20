@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find ctrl_interface)/launch/controllers_onlyp.launch" />
+  <node name="vel_bridge" pkg="ctrl_interface" type="vel_bridge" output="screen" >
+    <remap from="sot_cmdvel" to="/dynamic_graph/joint_states" />
+  </node>
+</launch>
