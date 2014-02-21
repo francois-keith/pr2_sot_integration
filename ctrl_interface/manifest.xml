@@ -1,0 +1,18 @@
+<package>
+  <description brief="ctrl_interface">
+
+     ctrl_interface
+
+  </description>
+  <author>Enea Scioni</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/ctrl_interface</url>
+  <depend package="roscpp" />
+  
+  <!-- TODO remove not used -->
+  <depend package="std_msgs" />
+  <depend package="sensor_msgs" />
+</package>
+
+

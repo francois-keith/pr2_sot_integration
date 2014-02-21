@@ -1,0 +1,13 @@
+<stack>
+  <description brief="PR2 interface utilities for RoboHow project (SoT integration)">
+
+    PR2 interface utilities for RoboHow project (SoT integration)
+
+  </description>
+  <author>Enea Scioni, Francois Keith</author>
+  <license>BSD,LGPL</license>
+  <review status="experimental" notes=""/>
+  <url>http://github.com/RoboHow/pr2_sot_integration</url>
+
+</stack>
+
