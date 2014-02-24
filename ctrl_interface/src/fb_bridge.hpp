@@ -3,7 +3,7 @@
 #include <ros/ros.h>
 #include <sensor_msgs/JointState.h>
 #include <dynamic_graph_bridge/Vector.h>
-
+#include <map>
 #include <string>
 
 class FbBridge
@@ -11,6 +11,7 @@ class FbBridge
   public:
     FbBridge();
     void feedbackCB(const sensor_msgs::JointStateConstPtr& msg);
+    void loadConfig();
     
   private:
     ros::Publisher m_sot_fb;
@@ -18,4 +19,5 @@ class FbBridge
     ros::NodeHandle m_nh;
     
     dynamic_graph_bridge::Vector m_data;
+    std::map<std::string,int> m_sot_order;
 };
