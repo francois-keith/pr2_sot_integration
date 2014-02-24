@@ -80,12 +80,31 @@ bool VBridge::loadConfig(const std::string& urdf_name)
   return true;
 }
 
+void VBridge::streamOut()
+{
+  for(unsigned int i=0;i<m_vel_pubs.size();i++)
+    m_vel_pubs[i].publish(m_cmdvel[i]);
+}
 
 void VBridge::setpointCB(const sensor_msgs::JointStateConstPtr& msg)
 {
   //To ensure safety commands, set all to zero first
   for(unsigned int i=0;i<m_cmdvel.size();i++)
-    m_cmdvel[i].data = 0.0;
+    m_cmdvel[i].data = 0.0; 
+  
+  //First, ensure that the velocity is not empty, if so, raise an error
+  if(msg->velocity.size() < 1)
+  {
+    ROS_ERROR("VELOCITY BRIDGE: I received an empty velocity message - command refused");
+    streamOut(); //Zeros
+    return;
+  }
+  if(msg->velocity.size() != msg->name.size() )
+  {
+    ROS_ERROR("VELOCITY BRIDGE: velocity message has different size of name size - command refused");
+    streamOut(); //Zeros
+    return;
+  }
   
   for(unsigned int i=0;i<msg->name.size();i++)
   {
@@ -95,6 +114,5 @@ void VBridge::setpointCB(const sensor_msgs::JointStateConstPtr& msg)
   }
   
   //stream out
-  for(unsigned int i=0;i<m_vel_pubs.size();i++)
-    m_vel_pubs[i].publish(m_cmdvel[i]);
+    streamOut();
 }

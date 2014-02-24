@@ -12,6 +12,7 @@ class VBridge
     void loadConfig();
     void createStreams();
     void setpointCB(const sensor_msgs::JointStateConstPtr& msg);
+    void streamOut();
     
   private:
     std::vector<ros::Publisher> m_vel_pubs;
