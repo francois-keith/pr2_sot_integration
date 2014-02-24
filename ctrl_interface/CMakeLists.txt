@@ -18,6 +18,7 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 ADD_REQUIRED_DEPENDENCY("roscpp")
 ADD_REQUIRED_DEPENDENCY("std_msgs")
 ADD_REQUIRED_DEPENDENCY("sensor_msgs")
+add_required_dependency(sot-core)
 ADD_ROSPACK_DEPENDENCY("dynamic_graph_bridge")
 # add_required_dependency(dynamic-graph)
 ADD_REQUIRED_DEPENDENCY("urdfdom")
@@ -45,11 +46,17 @@ set(HEADERS
 
 rosbuild_add_executable(vel_bridge ${SOURCES})
 target_link_libraries(vel_bridge urdfdom_model)
+
 rosbuild_add_executable(fb_bridge src/fb_bridge.cpp src/fb_bridge_main.cpp)
 rosbuild_add_executable(fake_sot_test src/fake_sot.cpp)
 
-# PKG_CONFIG_USE_DEPENDENCY(sot_pr2 "dynamic-graph")
-ROSPACK_USE_DEPENDENCY(fb_bridge "dynamic_graph_bridge")
+ROSPACK_USE_DEPENDENCY(vel_bridge    "dynamic_graph_bridge")
+ROSPACK_USE_DEPENDENCY(fb_bridge     "dynamic_graph_bridge")
+ROSPACK_USE_DEPENDENCY(fake_sot_test "dynamic_graph_bridge")
+#TODO: CORRECT THE ISSUE in the manifest.xml dg_bridge !!!!
+TARGET_LINK_LIBRARIES(vel_bridge "-L${SOT_CORE_LIBDIR}")
+TARGET_LINK_LIBRARIES(fb_bridge "-L${SOT_CORE_LIBDIR}")
+TARGET_LINK_LIBRARIES(fake_sot_test "-L${SOT_CORE_LIBDIR}")
 
 # install(TARGETS ctrl_interface DESTINATION ${CMAKE_INSTALL_LIBDIR})
 

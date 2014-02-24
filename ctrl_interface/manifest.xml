@@ -13,7 +13,6 @@
   <!-- TODO remove not used -->
   <depend package="std_msgs" />
   <depend package="sensor_msgs" />
-  <depend package="dynamic_graph_bridge" />
 </package>
 
 
