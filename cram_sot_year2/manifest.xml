@@ -1,0 +1,17 @@
+<package>
+  <description brief="cram_sot_year2">
+
+     Demo package showing integration between Stack of Tasks, Expession
+     Graphs, and CRAM for the RoboHow year 2 review.
+
+  </description>
+  <author>Georg Bartels</author>
+  <license>BSD</license>
+
+  <rosdep name="sbcl"/>
+  <depend package="roslisp"/>
+  <depend package="cl_transforms"/>
+  <depend package="robohow_common_msgs"/>
+</package>
+
+
