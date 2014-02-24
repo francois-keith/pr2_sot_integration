@@ -3,4 +3,7 @@
   <node name="vel_bridge" pkg="ctrl_interface" type="vel_bridge" output="screen" >
     <remap from="sot_cmdvel" to="/dynamic_graph/joint_states" />
   </node>
+  <node name="fb_bridge" pkg="ctrl_interface" type="fb_bridge" output="screen" >
+    <!-- remap from="sot_cmdvel" to="/dynamic_graph/joint_states" / -->
+  </node>
 </launch>

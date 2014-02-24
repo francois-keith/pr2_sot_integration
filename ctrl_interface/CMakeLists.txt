@@ -45,7 +45,7 @@ set(HEADERS
 
 rosbuild_add_executable(vel_bridge ${SOURCES})
 target_link_libraries(vel_bridge urdfdom_model)
-rosbuild_add_executable(fb_bridge src/fb_bridge.cpp)
+rosbuild_add_executable(fb_bridge src/fb_bridge.cpp src/fb_bridge_main.cpp)
 rosbuild_add_executable(fake_sot_test src/fake_sot.cpp)
 
 # PKG_CONFIG_USE_DEPENDENCY(sot_pr2 "dynamic-graph")
