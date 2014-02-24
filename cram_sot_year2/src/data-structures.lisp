@@ -26,19 +26,27 @@
 ;;; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 ;;; POSSIBILITY OF SUCH DAMAGE.
 
-(defsystem cram-sot-year2
-  :author "Georg Bartels <georg.bartels@cs.uni-bremen.de>"
-  :license "BSD"
-  :description "Demo package showing integration between Stack of Tasks, Expession
-                Graphs, and CRAM for the RoboHow year 2 review."
+(in-package :cram-sot-year2)
 
-  :depends-on (roslisp
-               cl-transforms
-               robohow_common_msgs-msg
-               geometry_msgs-msg)
-  :components
-  ((:module "src"
-    :components
-    ((:file "package")
-     (:file "data-structures" :depends-on ("package"))
-     (:file "conversions" :depends-on ("data-structures" "package"))))))
+(defclass xgraph-motion ()
+  ((constraints :initarg :constraints :reader constraints :type list))
+  (:documentation "Common LISP representation of a single motion XGraph."))
+
+(defclass xgraph-constraint ()
+  ((id :initarg :it :reader id :type id)
+   (relation :initarg :relation :reader relation :type symbol)
+   (tool :initarg :tool :reader tool :type xgraph-feature)
+   (world :initarg :world :reader world :type xgraph-feature)
+   (lower :initarg :lower :reader lower :type vector)
+   (upper :initarg :upper :reader upper :type vector)
+   (selector :initarg :selector :reader selector :type string)
+   (gain :initarg :gain :reader gain :type vector))
+  (:documentation "Common LISP representation of an XGraph motion constraint."))
+
+(defclass xgraph-feature ()
+  ((id :initarg :id :reader id :type string)
+   (frame-id :initarg :frame-id :reader frame-id :type string)
+   (feature-type :initarg :feature-type :reader feature-type :type symbol)
+   (origin :initarg :origin :reader origin :type cl-transforms:3d-vector)
+   (orientation :initarg :orientation :reader orientation :type cl-transforms:3d-vector))
+  (:documentation "Common LISP representation of a 3D-feature for XGraph motion specs."))

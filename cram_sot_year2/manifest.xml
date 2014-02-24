@@ -12,6 +12,7 @@
   <depend package="roslisp"/>
   <depend package="cl_transforms"/>
   <depend package="robohow_common_msgs"/>
+  <depend package="geometry_msgs"/>
 </package>
 
 
