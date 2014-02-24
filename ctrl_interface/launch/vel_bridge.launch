@@ -4,6 +4,6 @@
     <remap from="sot_cmdvel" to="/dynamic_graph/joint_states" />
   </node>
   <node name="fb_bridge" pkg="ctrl_interface" type="fb_bridge" output="screen" >
-    <!-- remap from="sot_cmdvel" to="/dynamic_graph/joint_states" / -->
+    <remap from="/dynamic_graph/fb" to="/positionFeedback" />
   </node>
 </launch>
