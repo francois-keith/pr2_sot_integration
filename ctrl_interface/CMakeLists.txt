@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.4.6)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
 include(cmake/base.cmake)
+include(cmake/ros.cmake)
 set(ROS_BUILD_TYPE RelWithDebInfo)
 if(NOT DEFINED CMAKE_INSTALL_LIBDIR)
   set(CMAKE_INSTALL_LIBDIR lib)
@@ -17,6 +18,8 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 ADD_REQUIRED_DEPENDENCY("roscpp")
 ADD_REQUIRED_DEPENDENCY("std_msgs")
 ADD_REQUIRED_DEPENDENCY("sensor_msgs")
+ADD_ROSPACK_DEPENDENCY("dynamic_graph_bridge")
+# add_required_dependency(dynamic-graph)
 ADD_REQUIRED_DEPENDENCY("urdfdom")
 
 # Handle rpath necessary to handle ROS multiplace packages
@@ -42,8 +45,11 @@ set(HEADERS
 
 rosbuild_add_executable(vel_bridge ${SOURCES})
 target_link_libraries(vel_bridge urdfdom_model)
+rosbuild_add_executable(fb_bridge src/fb_bridge.cpp)
 rosbuild_add_executable(fake_sot_test src/fake_sot.cpp)
-#PKG_CONFIG_USE_DEPENDENCY(sot_pr2 "dynamic-graph")
+
+# PKG_CONFIG_USE_DEPENDENCY(sot_pr2 "dynamic-graph")
+ROSPACK_USE_DEPENDENCY(fb_bridge "dynamic_graph_bridge")
 
 # install(TARGETS ctrl_interface DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
