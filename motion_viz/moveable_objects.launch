@@ -1,0 +1,43 @@
+<launch>
+  <node name="object_tf" type="moveable_tf.py" pkg="motion_viz" args="">
+    <param name="frame_name"  value="/object"/>
+    <param name="parent_name" value="/base_link"/>
+    <remap from="/twist" to="/twist_object"/>
+  </node>
+
+
+  <node name="tool_tf" type="moveable_tf.py" pkg="motion_viz" args="">
+    <param name="frame_name"  value="/tool"/>
+    <param name="parent_name" value="/right_arm_hand_link"/>
+    <remap from="/twist" to="/twist_tool"/>
+  </node>
+
+
+  <!-- Joystick mapping for the PS3 joystick:
+        * L1 + axes: translation of object
+        * L2 + axes: rotation of object
+    -->
+  <node name="joy_to_twist_object" type="joy_to_twist.py" pkg="joy_to_twist" args="">
+    <rosparam ns="mapping10"> [1,0,3,_,_,_] </rosparam>
+    <rosparam ns="mapping8" > [_,_,_,1,0,3] </rosparam>
+    <remap from="/twist" to="/twist_object"/>
+    <remap from="/joy" to="/joy_ps3"/>
+  </node>
+
+
+  <!-- Joystick mapping for the PS3 joystick:
+        * R1 + axes: translation of tool
+        * R2 + axes: rotation of tool
+    -->
+  <node name="joy_to_twist_tool" type="joy_to_twist.py" pkg="joy_to_twist" args="">
+    <rosparam ns="mapping11"> [1,0,3,_,_,_] </rosparam>
+    <rosparam ns="mapping9" > [_,_,_,1,0,3] </rosparam>
+    <remap from="/twist" to="/twist_tool"/>
+    <remap from="/joy" to="/joy_ps3"/>
+  </node>
+
+  <!-- TODO: figure out the ps3 dead zone -->
+  <node name="joystick" type="joy_node" pkg="joy" args=""/>
+
+
+</launch>

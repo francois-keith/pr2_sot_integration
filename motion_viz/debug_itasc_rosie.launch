@@ -1,0 +1,19 @@
+<launch>
+  <node name="twist_viz" type="twist_viz.py" pkg="motion_viz" args="">
+    <param name="base_frame" value="/base_link"/>
+    <param name="ref_point" value="/left_arm_hand_link"/>
+    <param name="target_frame" value="/left_arm_hand_link"/>
+  </node>
+
+  <node name="qdot2twist" type="ros_qdot2twist.py" pkg="motionControl"
+        args="-c config-lwr-left.py">
+  </node>
+
+  <node name="joint_state_publisher"
+        type="joint_state_publisher"
+        pkg= "joint_state_publisher">
+    <remap from="/joint_states" to="/loopback_controllers/desired_joints"/>
+  </node>
+
+</launch>
+
