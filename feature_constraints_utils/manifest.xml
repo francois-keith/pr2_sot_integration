@@ -1,0 +1,18 @@
+<package>
+  <description brief="feature_constraints_utils">
+    This packace contains utility packages for the feature
+    constraints controller. Note, some of them might still
+    be unfinished. Just a few things to test out...
+  </description>
+  <author>Ingo Kresse</author>
+  <email>kresse@in.tum.de</email>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="kdl"/>
+  <depend package="urdf_parser_py"/>
+  <depend package="motion_viz"/>
+  <depend package="rospy"/>
+</package>
+

@@ -1,0 +1,48 @@
+<launch>
+  <!--hard coded definition of some constraints/features -->
+  <node name="constraints" pkg="feature_constraints_standalone"
+        type="constraint_config.py"/>
+
+  <!--hard coded definition of some constraints parameter -->
+  <node name="constraints_parameter" pkg="feature_constraints_standalone"
+        type="constraint_commander-pouring.py"/>
+
+  <!--start the feature visualization node -->
+  <node name="feature_viz" pkg="feature_constraints_utils" 
+        type="feature_viz.py" 
+        output="screen"/>
+
+  <!--define some tf for the environment -->
+  <!--
+  <node name="pancake_spatula_transform" pkg="tf"
+        type="static_transform_publisher"
+        args="0.1 0.2 0.2  1.7 -1.9 0 /pancake /spatula 100"/>
+
+  <node name="world_pancake_transform" pkg="tf"
+        type="static_transform_publisher"
+        args="0 0 0  0 0 0 1 /base_link /pancake 100"/>
+
+  <node name="world_baker_transform" pkg="tf"
+        type="static_transform_publisher"
+        args="0 0 0  0 0 0 1 /base_link /baker 100"/>
+  -->
+
+  <node name="bottle" pkg="tf"
+        type="static_transform_publisher"
+        args="0.3  -0.27  1  0 0 0 /odom /bottle 100"/>
+
+  <node name="cup" pkg="tf"
+        type="static_transform_publisher"
+        args="0 0 0  0 0 0 1 /odom /cup 100"/>
+
+  <!-- spatula visualization -->
+  <!--
+  <node name="spatula_model" pkg="itasc"
+        type="spatula_model.py" args="/spatula"/>
+
+  <node name="baker_model" pkg="itasc" type="baker_model.py" args="/table"/>
+
+  <node name="table_transform" pkg="tf" type="static_transform_publisher"
+        args="0.1 0.0 -0.763  0 0 0 /base_link /table 100"/>
+  -->
+</launch>
