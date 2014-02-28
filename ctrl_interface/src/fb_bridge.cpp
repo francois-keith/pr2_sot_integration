@@ -8,7 +8,7 @@ FbBridge::FbBridge()
 {
   m_pr2_fb = m_nh.subscribe<sensor_msgs::JointState>("joint_states", 1,
     boost::bind(&FbBridge::feedbackCB,this, _1) );
-  m_sot_fb = m_nh.advertise<dynamic_graph_bridge::Vector>("dynamic_graph/fb", 1);
+  m_sot_fb = m_nh.advertise<dynamic_graph_bridge_msgs::Vector>("dynamic_graph/fb", 1);
   
   loadConfig();
 }
