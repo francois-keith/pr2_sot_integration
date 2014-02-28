@@ -1,6 +1,6 @@
 <launch>
 	<!-- load parameters -->
-	<rosparam file="$(find ctrl_interface)/config/p.yaml" command="load" />
+	<rosparam file="$(find ctrl_interface)/config/pi_lowered.yaml" command="load" />
 	<rosparam file="$(find ctrl_interface)/config/head_pid.yaml" command="load" />
 	
 	<!-- unspawn the default controllers -->

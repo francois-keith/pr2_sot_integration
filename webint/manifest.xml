@@ -1,0 +1,15 @@
+<package>
+  <description brief="webint">
+
+     Simple web interface using rosbridge server and websocket
+     to show expressiongraph structure and SoT tasks, for review year 2.
+
+  </description>
+  <author>Enea Scioni</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/webint</url>
+
+</package>
+
+

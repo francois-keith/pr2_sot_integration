@@ -1,0 +1,10 @@
+<launch>
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+
+<!-- 
+  rosrun rospy_tutorials add_two_ints_server
+  rostopic echo /cmd_vel
+  rostopic pub /listener std_msgs/String "Hello, World"
+  -->
+  
+</launch>
