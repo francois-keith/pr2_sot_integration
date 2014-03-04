@@ -1,7 +1,9 @@
 <launch>
   <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
 
-  <node name="task_sender" pkg="webint" type="task_sender" />
+  <!-- node name="task_sender" pkg="webint" type="task_sender" / -->
+    <!-- remap from="/sot_stream" to="/constraint_config" / -->
+  <!-- /node -->
 <!-- 
   rosrun rospy_tutorials add_two_ints_server
   rostopic echo /cmd_vel

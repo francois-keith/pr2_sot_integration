@@ -3,10 +3,424 @@
 <head>
 <meta charset="utf-8" />
 
+<title>RoboHow Vis</title>
+<link rel="shortcut icon" type="image/svg" href="../resources/logo-robohow.svg" />
+<!-- <link rel="SHORTCUT ICON" href="http://domain and path/favicon.ico" /> -->
+<link rel="icon" href="../resources/logo-robohow.svg" type="image/svg" />
+
+
 <script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
 <script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
 
+<script language="javascript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="./viz.js"></script>
+<!-- <script language="javascript" type="text/javascript" src="./site.js"> </script> -->
+
+<script type="bogus" id="sample5_text">
+digraph a{
+  rankdir=LR;
+  "webgraphviz" -> "@" -> "gmail" -> "." -> "com"
+}
+</script>
+
+<script type="bogus" id="sample_text">
+digraph expressiontree { 
+rankdir=BT
+
+S30005232[label="sqrt",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29991984[label="add",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30025312[label="mul",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30002352[label="coord_x",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30028336[label="cached()",shape=box,style=filled,fillcolor="#FF7400",color=black]
+S30028032[label="transform",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30028208[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29992048[label="origin",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30026208[label="cached()",shape=box,style=filled,fillcolor="#FF7400",color=black]
+S30025824[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30025440[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30025056[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30024672[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30024288[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30023904[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30023520[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30023136[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30022752[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30022368[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30021984[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30021600[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30021216[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30020832[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30020448[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30020064[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30019680[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30019296[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30018912[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30018528[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30018144[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30017760[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30017376[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30016992[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30016608[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30016224[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30015840[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30015456[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30015072[label="compose",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30014832[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30014576[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30014496[label="input(0)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30014576 -> S30014496
+S30014944[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30014832 -> S30014576
+S30014832 -> S30014944
+S30014208[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30013968[label="rot_x",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30013328[label="negate",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30013792[label="input(1)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30013328 -> S30013792
+S30013968 -> S30013328
+S30014368[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30014208 -> S30013968
+S30014208 -> S30014368
+S30015072 -> S30014832
+S30015072 -> S30014208
+S30013504[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30013152[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30013072[label="input(2)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30013152 -> S30013072
+S30013664[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30013504 -> S30013152
+S30013504 -> S30013664
+S30015456 -> S30015072
+S30015456 -> S30013504
+S30012832[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30012576[label="rot_x",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30012496[label="input(3)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30012576 -> S30012496
+S30012944[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30012832 -> S30012576
+S30012832 -> S30012944
+S30015840 -> S30015456
+S30015840 -> S30012832
+S30012112[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30011856[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30011776[label="input(4)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30011856 -> S30011776
+S30012224[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30012112 -> S30011856
+S30012112 -> S30012224
+S30016224 -> S30015840
+S30016224 -> S30012112
+S30011488[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30011184[label="rot_x",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30011008[label="negate",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30010928[label="input(5)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30011008 -> S30010928
+S30011184 -> S30011008
+S30011648[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30011488 -> S30011184
+S30011488 -> S30011648
+S30016608 -> S30016224
+S30016608 -> S30011488
+S30010688[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30010432[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30010352[label="input(6)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30010432 -> S30010352
+S30010800[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30010688 -> S30010432
+S30010688 -> S30010800
+S30016992 -> S30016608
+S30016992 -> S30010688
+S30009968[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30009712[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30009632[label="input(7)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30009712 -> S30009632
+S30010080[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30009968 -> S30009712
+S30009968 -> S30010080
+S30017376 -> S30016992
+S30017376 -> S30009968
+S30009248[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30008992[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30008912[label="input(8)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30008992 -> S30008912
+S30009360[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30009248 -> S30008992
+S30009248 -> S30009360
+S30017760 -> S30017376
+S30017760 -> S30009248
+S30008528[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30008272[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30008192[label="input(9)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30008272 -> S30008192
+S30008640[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30008528 -> S30008272
+S30008528 -> S30008640
+S30018144 -> S30017760
+S30018144 -> S30008528
+S30007808[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30007552[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30007472[label="input(10)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30007552 -> S30007472
+S30007920[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30007808 -> S30007552
+S30007808 -> S30007920
+S30018528 -> S30018144
+S30018528 -> S30007808
+S30007088[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30006832[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30006752[label="input(11)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30006832 -> S30006752
+S30007200[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30007088 -> S30006832
+S30007088 -> S30007200
+S30018912 -> S30018528
+S30018912 -> S30007088
+S30006368[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30006112[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30006032[label="input(12)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30006112 -> S30006032
+S30006480[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30006368 -> S30006112
+S30006368 -> S30006480
+S30019296 -> S30018912
+S30019296 -> S30006368
+S30005648[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30005392[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30005312[label="input(13)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30005392 -> S30005312
+S30005760[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30005648 -> S30005392
+S30005648 -> S30005760
+S30019680 -> S30019296
+S30019680 -> S30005648
+S30004928[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30004672[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30004592[label="input(14)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30004672 -> S30004592
+S30005040[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30004928 -> S30004672
+S30004928 -> S30005040
+S30020064 -> S30019680
+S30020064 -> S30004928
+S30004208[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30003952[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30003872[label="input(15)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30003952 -> S30003872
+S30004320[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30004208 -> S30003952
+S30004208 -> S30004320
+S30020448 -> S30020064
+S30020448 -> S30004208
+S30003488[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30003232[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30003152[label="input(16)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30003232 -> S30003152
+S30003600[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30003488 -> S30003232
+S30003488 -> S30003600
+S30020832 -> S30020448
+S30020832 -> S30003488
+S30002768[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30002512[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30002432[label="input(17)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30002512 -> S30002432
+S30002880[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30002768 -> S30002512
+S30002768 -> S30002880
+S30021216 -> S30020832
+S30021216 -> S30002768
+S30002048[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30001792[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30001712[label="input(18)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30001792 -> S30001712
+S30002160[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30002048 -> S30001792
+S30002048 -> S30002160
+S30021600 -> S30021216
+S30021600 -> S30002048
+S30001328[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30001072[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30000992[label="input(19)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30001072 -> S30000992
+S30001440[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30001328 -> S30001072
+S30001328 -> S30001440
+S30021984 -> S30021600
+S30021984 -> S30001328
+S30000608[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30000352[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30000272[label="input(20)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30000352 -> S30000272
+S30000720[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S30000608 -> S30000352
+S30000608 -> S30000720
+S30022368 -> S30021984
+S30022368 -> S30000608
+S29999888[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29999632[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29999552[label="input(21)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29999632 -> S29999552
+S30000000[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29999888 -> S29999632
+S29999888 -> S30000000
+S30022752 -> S30022368
+S30022752 -> S29999888
+S29999168[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29998912[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29998832[label="input(22)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29998912 -> S29998832
+S29999280[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29999168 -> S29998912
+S29999168 -> S29999280
+S30023136 -> S30022752
+S30023136 -> S29999168
+S29998448[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29998192[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29998112[label="input(23)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29998192 -> S29998112
+S29998560[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29998448 -> S29998192
+S29998448 -> S29998560
+S30023520 -> S30023136
+S30023520 -> S29998448
+S29997728[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29997472[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29997392[label="input(24)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29997472 -> S29997392
+S29997840[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29997728 -> S29997472
+S29997728 -> S29997840
+S30023904 -> S30023520
+S30023904 -> S29997728
+S29997008[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29996752[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29996672[label="input(25)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29996752 -> S29996672
+S29997120[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29997008 -> S29996752
+S29997008 -> S29997120
+S30024288 -> S30023904
+S30024288 -> S29997008
+S29996288[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29996032[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29995952[label="input(26)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29996032 -> S29995952
+S29996400[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29996288 -> S29996032
+S29996288 -> S29996400
+S30024672 -> S30024288
+S30024672 -> S29996288
+S29995568[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29995312[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29995232[label="input(27)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29995312 -> S29995232
+S29995680[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29995568 -> S29995312
+S29995568 -> S29995680
+S30025056 -> S30024672
+S30025056 -> S29995568
+S29994848[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29994592[label="rot_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29994512[label="input(28)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29994592 -> S29994512
+S29994960[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29994848 -> S29994592
+S29994848 -> S29994960
+S30025440 -> S30025056
+S30025440 -> S29994848
+S29992464[label="frame",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29992208[label="rot_y",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29992128[label="input(29)",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29992208 -> S29992128
+S29992528[label="constant",shape=box,style=filled,fillcolor="#FFB273",color=black]
+S29992464 -> S29992208
+S29992464 -> S29992528
+S30025824 -> S30025440
+S30025824 -> S29992464
+S30026208 -> S30025824
+S29992048 -> S30026208
+S30028032 -> S30028208
+S30028032 -> S29992048
+S30028336 -> S30028032
+S30002352 -> S30028336
+S30000912[label="coord_x",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S30000912 -> S30028336
+S30025312 -> S30002352
+S30025312 -> S30000912
+S30023776[label="mul",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29998752[label="coord_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29998752 -> S30028336
+S29995152[label="coord_z",shape=box,style=filled,fillcolor="#5CCCCC",color=black]
+S29995152 -> S30028336
+S30023776 -> S29998752
+S30023776 -> S29995152
+S29991984 -> S30025312
+S29991984 -> S30023776
+S30005232 -> S29991984
+}
+</script>
+
 <script type="text/javascript" type="text/javascript">
+  //refresh page utility
+  function timedRefresh(timeoutPeriod)
+  {
+    setTimeout("location.reload(true);",timeoutPeriod);
+  }
+  
+  //reading file utilities
+  var reader;
+  /**
+  * Check for the various File API support.
+  */
+  function checkFileAPI() {
+      if (window.File && window.FileReader && window.FileList && window.Blob) {
+            reader = new FileReader();
+            return true; 
+        } else {
+            alert('The File APIs are not fully supported by your browser. Fallback required.');
+            return false;
+        }
+    }
+
+//   function displayContents(data)
+//   {
+//     // Print the contents of the file
+//     var span = document.createElement('span');                    
+//     span.innerHTML = ['<p>',data,'</p>'].join('');
+//     document.getElementById('graphviz_svg_div').insertBefore(span, null);
+//   }
+  
+  /**
+  * read text input
+  */
+   var output = ""; //placeholder for text output
+  function readText(filePath) 
+  {
+       
+//         if(filePath.files && filePath.files[0])
+        if(filePath.target.files[0])
+        {
+        console.log('inside');
+            reader.onload = (function (e) {
+                        return function(e) {
+              // Print the contents of the file
+//               var span = document.createElement('span');                    
+//               span.innerHTML = ['<p>',e.target.result,'</p>'].join('');
+//               document.getElementById('graphviz_svg_div').insertBefore(span, null);
+              output = [e.target.result].join('');
+            };//end onload()
+            })(filePath.target.files[0]);
+            reader.readAsText(filePath.target.files[0],"UTF-8");
+        }
+        else 
+        { //this is where you could fallback to Java Applet, Flash or similar
+          console.log('fallback2');
+            return false;
+        }       
+        return true;
+  }   
+   
+  
   // Connecting to ROS
   // -----------------
 
@@ -40,33 +454,95 @@
   // Subscribing to a Topic
   // ----------------------
 
-  var listener = new ROSLIB.Topic({
+//   var listener = new ROSLIB.Topic({
+//     ros : ros,
+//     name : '/listener',
+//     messageType : 'std_msgs/String'
+//   });
+// 
+//   listener.subscribe(function(message) {
+//     console.log('Received message on ' + listener.name + ': ' + message.data);
+//     document.getElementById('statusbar').innerHTML = message.data; 
+//     listener.unsubscribe();
+//   });
+
+  var sot_pub = new ROSLIB.Topic({
     ros : ros,
-    name : '/listener',
-    messageType : 'std_msgs/String'
+    name : '/constraint_config', //'/sot_stream',
+    messageType : 'robohow_common_msgs/ConstraintConfig' //'std_msgs/String'
   });
-
-  listener.subscribe(function(message) {
-    console.log('Received message on ' + listener.name + ': ' + message.data);
-    document.getElementById('statusbar').innerHTML = message.data; 
-    listener.unsubscribe();
-  });
-
-  // Getting and setting a param value
-  // ---------------------------------
-
-  ros.getParams(function(params) {
-    console.log(params);
-  });
-
-  var maxVelX = new ROSLIB.Param({
-    ros : ros,
-    name : 'max_vel_y'
-  });
-
-  maxVelX.set(0.8);
-  maxVelX.get(function(value) {
-    console.log('MAX VAL: ' + value);
+  
+  function getRandomColor()
+  {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ )
+      color += letters[Math.round(Math.random() * 15)];
+    
+    return color;
+  }
+  
+  function getRandomGreen()
+  {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ )
+    {
+      color += letters[Math.round(Math.random() * 15)];
+      if(i==2 || i==3)
+      {
+        color += 'F';
+      }
+    }
+    
+    return color;
+  }
+  
+  var filename = "";
+  function handleFileSelect(env)
+  {
+    filename = env.target.files[0];
+  }
+  
+  var counter = 0;
+  sot_pub.subscribe(function(message) {
+//     console.log('Received message on ' + listener.name + ': ' + message.data);
+    document.getElementById('sotlist').innerHTML = message.constraints[0].name + '\n' + message.constraints[1].name ;
+    
+    var tablestart="<table id=myTable border=1 style=width:300px >";
+    var tableend = "</table>";
+    var trstartrnd = "<tr bgcolor=" + getRandomColor() +">";
+    var trstart = "<tr bgcolor=#ff9966>";
+    var trend = "</tr>";
+    var tdstart = "<td align=center valign=middle>";
+    var tdend = "</td>";
+    var data="data in cell";
+    
+    var updatelist = tablestart;
+    updatelist = updatelist + trstart+"<th>Task Priority</th><th>Task Name</th>"+trend;
+    for (var i=0;i<message.constraints.length;i++)
+    { 
+//       document.write(message.constraints[i] + "<br>");
+      updatelist = updatelist + "<tr bgcolor=" + getRandomGreen() +">" + tdstart + i + tdend + tdstart + message.constraints[i].name + tdend;
+    }
+    updatelist = updatelist + tableend;
+    updatelist = updatelist + counter;
+    counter  = counter +1;
+    document.getElementById('sotlist').innerHTML=updatelist;
+    
+    //Update graph
+    checkFileAPI();
+    document.getElementById('files').addEventListener('change', readText,false);
+//     readText(document.getElementById('files').target.files[0]);
+    var svg_div = jQuery('#graphviz_svg_div');
+    var data = jQuery("#sample_text").html().trim();
+    // Generate the Visualization of the Graph into "svg".
+    var svg = Viz(data, "svg");
+    svg_div.html("<hr>"+svg);
+    
+    //Auto refresh
+//     document.location.reload(true);
+//     sot_pub.unsubscribe(); //This is uncomment, so it is updated if a new message is incoming - autorefresh-like
   });
   
   function foo() { 
@@ -76,11 +552,35 @@
 </script>
 </head>
 
+
 <body>
-  <h1>Simple Visualization Example</h1>
-  <p>Message received from a topic</p>
-  <div class="messages" id="statusbar"></div>
-  <p>Callback to a button - send something</p>
-  <div><button id="b1" type="button" onclick="foo()">Foo !</button></div> 
+<!-- <body onload="JavaScript:timedRefresh(1000);"> -->
+<!--   <div class="messages" id="statusbar"></div> -->
+  <table width="900px">
+  <tr>
+   <td style="background-color:#E0E0E0;width:500px;align=center;valign=middle>">
+   <img src="../resources/logo-robohow.svg" alt="Robohow Logo" />
+   <h1>RoboHow Controller Visualiser (SoT + Expressiongraph) </h1>
+  </tr>
+  </table>
+  
+  <table width="800px">
+  <tr>
+    <td style="background-color:#E0E0E0;width:500px;align=center;valign=middle>">
+    <h2>Stack of Task</h2>
+    <div class="messages" id="sotlist"></div>
+  
+    <td style="background-color:#E0E0E0;width:500px;">
+    <h2>Expression Graph</h2>
+    <img src="../resources/" alt="Expressiongraph image" />
+<!--    <div id="graphviz_svg_div" width="50px" height="50px">
+      
+   </div>-->
+  </tr>
+  <!-- p>Callback to a button - send something</p>
+  <div><button id="b1" type="button" onclick="foo()">Foo !</button></div --> 
+  </table>
+<!--   <input type="file" id="files" name="files[]" multiple /> -->
 </body>
+
 </html>
