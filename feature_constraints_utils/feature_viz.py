@@ -63,7 +63,7 @@ def msg2feature(msg):
   """Convert a constraint_msgs/Feature to a Feature."""
   pos = msg2vec(msg.position)
   dir = msg2vec(msg.direction)
-  return Feature(msg.type, pos, dir, msg.frame_id)
+  return FeatureDisplay(msg.type, pos, dir, msg.frame_id)
 
 
 def marker_base(**args):
@@ -174,15 +174,15 @@ class LocatedVector:
     return [marker_line(self.pos, self.pos + self.dir)]
 
 
-class Feature:
+class FeatureDisplay:
   """A geometric feature (plane, line or point) with position and direction.
 
   This class also stores the position and direction 'relative' to
-  it's parent frame, so 'pos' and 'dir' it can re-computed when
+  its parent frame, so 'pos' and 'dir' can be re-computed when
   the frame moves. For computation, the method compute() may
   be called, to have all operations for a LocatedVector available.
 
-  It's method show() has two functions: It can either show the feature itself,
+  Its method show() has two functions: It can either show the feature itself,
   or it can show itself as a vector, depending on the constraint function
   which calls the show() method. The display of the feature itself
   is called from the ConstraintDisplay class directly.
@@ -454,10 +454,25 @@ class ConstraintDisplay:
       self.tool_features[c.tool_feature.name]   = msg2feature(c.tool_feature)
       self.world_features[c.world_feature.name] = msg2feature(c.world_feature)
     for c in constraints:
-      if c.function in constraint_functions:
+      #TODO an automatic way to do that.
+      functionName = ''
+      if c.function == 1:
+        functionName = 'angle'
+      elif c.function == 2:
+        functionName = 'distance'
+      elif c.function == 3 and c.command.selec == '111':
+        functionName = 'height'
+      elif c.function == 3 and c.command.selec == '100':
+        functionName = 'height'
+      elif c.function == 3 and c.command.selec == '011':
+        functionName = 'perpendicular'
+      elif c.function == 4:
+        functionName = 'pointing_at'
+      if functionName != '' :
         f_tool  = self.tool_features[c.tool_feature.name]
         f_world = self.world_features[c.world_feature.name]
-        constraint = constraint_functions[c.function]((f_tool, f_world))
+
+        constraint = constraint_functions[functionName]((f_tool, f_world))
         self.constraints[c.name] = constraint
 #      else:
 #        print "constraint function '%s' not found!" % c.function
