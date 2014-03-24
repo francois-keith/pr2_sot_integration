@@ -37,9 +37,11 @@ public:
         {
           webint::WebifTaskInfo out_msg;
     
-          for(std::map<std::string, ros::Subscriber>::iterator it=m_errors.begin();
-              it!=m_errors.end();it++)
+//           for(std::map<std::string, ros::Subscriber>::iterator it=m_errors.begin();
+//               it!=m_errors.end();it++)
+          for(unsigned int i=0;i<m_order.size();i++)
           {
+            std::map<std::string,ros::Subscriber>::iterator it = m_errors.find(m_order[i]);
             out_msg.task_name.push_back(it->first);
             std::map<std::string,NormData>::iterator valit = m_cache.find(it->first);
             out_msg.error_norm.push_back(valit->second.value);
@@ -84,12 +86,14 @@ private:
   void configCB(const robohow_common_msgs::ConstraintConfig::ConstPtr& msg)
   {
     std::map<std::string,bool> tmp;
+    m_order.clear();
     
     for(unsigned int i=0;i<msg->constraints.size();i++)
     {
       std::string tmp_taskname = msg->constraints[i].name;
       std::replace( tmp_taskname.begin(), tmp_taskname.end(), '-', '_');
-      
+     
+      m_order.push_back(tmp_taskname);
       std::map<std::string, ros::Subscriber>::iterator it = m_errors.find(tmp_taskname);
       if(it==m_errors.end())
       { 
@@ -118,6 +122,7 @@ private:
   ros::Publisher  m_webif;
   std::map<std::string, ros::Subscriber> m_errors;
   std::map<std::string, NormData> m_cache;
+  std::vector<std::string> m_order;
   boost::thread m_thread;
 };
 
