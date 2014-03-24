@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+<title>RoboHow Vis</title>
+<link rel="shortcut icon" type="image/svg" href="../resources/logo-robohow.svg" />
+<!-- <link rel="SHORTCUT ICON" href="http://domain and path/favicon.ico" /> -->
+<link rel="icon" href="../resources/logo-robohow.svg" type="image/svg" />
+
+
+<script type="text/javascript" src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+<script type="text/javascript" src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+
+<script type="text/javascript" type="text/javascript">
+
+
+  //Color gradient utility
+  function gradient(topColor,bottomColor,value) {
+    function hexToRgb(hex) {
+        var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+            return r + r + g + g + b + b;
+        });
+
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    function rgbToHex(r, g, b) {
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+
+//     var ratio = 1.24;
+    var top = hexToRgb(topColor);
+    var bottom = hexToRgb(bottomColor);
+    var stepr = top.r - bottom.r; 
+    var stepg = top.g - bottom.g;
+    var stepb = top.b - bottom.b;
+    var index = [stepr/100, stepg/100, stepb/100];
+    var r = Math.floor(top.r - value*index[0]);
+    var g = Math.floor(top.g - value*index[1]);
+    var b = Math.floor(top.b - value*index[2]);
+    var res = rgbToHex(r, g, b);
+
+    return res;
+
+  }
+
+  //refresh page utility
+  function timedRefresh(timeoutPeriod)
+  {
+    setTimeout("location.reload(true);",timeoutPeriod);
+  }
+  
+  // Connecting to ROS
+  // -----------------
+
+  var ros = new ROSLIB.Ros({
+    url : 'ws://localhost:9090'
+  });
+
+
+  var sot_pub = new ROSLIB.Topic({
+    ros : ros,
+    name : '/webif_config', //'/sot_stream',
+    messageType : 'webint/WebifTaskInfo'
+  });
+  
+  function getRandomColor()
+  {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ )
+      color += letters[Math.round(Math.random() * 15)];
+    
+    return color;
+  }
+  
+  function getRandomGreen()
+  {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ )
+    {
+      color += letters[Math.round(Math.random() * 15)];
+      if(i==2 || i==3)
+      {
+        color += 'F';
+      }
+    }
+    
+    return color;
+  }
+  
+  
+  function getStatusColor(status,ratio)
+  {
+    if(status == "OK" )
+      return '#cdeb8f';
+    if(status == "SOLVING" )
+      return gradient('#ff0000','fcb938',ratio);
+    if(status == "NOT OK" )
+      return gradient('#ff0000','#ffc6c2',ratio);
+  }
+  
+  var filename = "";
+  function handleFileSelect(env)
+  {
+    filename = env.target.files[0];
+  }
+  
+  var counter = 0;
+  sot_pub.subscribe(function(message) {
+
+    
+    var tablestart="<table id=myTable border=1 style=width:1000px >";
+    var tableend = "</table>";
+    var trstartrnd = "<tr bgcolor=" + getRandomColor() +">";
+    var trstart = "<tr bgcolor=#ff9966>";//#094ab2
+    var trstart = "<tr bgcolor=#9ad5f6>";
+    var trend = "</tr>";
+    var tdstart = "<td align=center valign=middle>";
+    var tdend = "</td>";
+    var data="data in cell";
+    
+    var updatelist = tablestart;
+    updatelist = updatelist + trstart+"<th>Task Priority</th><th>Task Name</th><th>Percent Complete %</th><th>Task Status</th>"+trend;
+    for (var i=0;i<message.task_name.length;i++)
+    { 
+      var ratio = Math.floor(message.ratio[i]*100);
+      if (ratio > 100)
+        ratio = 100;
+      ratio = 100 - ratio;  //getStatusColor(message.meta_ratio[i])
+      var gc = getStatusColor(message.meta_ratio[i],ratio);
+      updatelist = updatelist + "<tr bgcolor=" + gc +">" + tdstart + i + tdend + tdstart + message.task_name[i] + tdend
+        + tdstart + ratio + tdend + tdstart + message.meta_ratio[i] + tdend;
+    }
+    updatelist = updatelist + tableend;
+    updatelist = updatelist + counter;
+    counter  = counter +1;
+    document.getElementById('sotlist').innerHTML=updatelist;
+    
+    //Auto refresh
+//     document.location.reload(true);
+//     sot_pub.unsubscribe(); //This is uncomment, so it is updated if a new message is incoming - autorefresh-like
+  });
+  
+</script>
+</head>
+
+
+<body>
+  <table width="900px">
+  <tr>
+   <td style="background-color:#E0E0E0;width:500px;align=center;valign=middle>">
+   <img src="../resources/logo-robohow.svg" alt="Robohow Logo" />
+   <h1>RoboHow Task Monitoring (SoT + Expressiongraph) </h1>
+  </tr>
+  </table>
+  
+  <table width="800px">
+  <tr>
+    <td style="background-color:#E0E0E0;width:500px;align=center;valign=middle>">
+    <h2>Tasks Running</h2>
+    <div class="messages" id="sotlist"></div>
+  </tr>
+  </table>
+</body>
+
+</html>
